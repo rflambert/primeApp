@@ -23,3 +23,20 @@ def get_hit_count():
 def hello():
     count = get_hit_count()
     return 'Hello World! I have been seen {} times.\n'.format(count)
+
+@app.route('/isPrime/<int:number>')
+def isPrime(number):
+    if number <= 3:
+        if number > 1:
+            return '%d is prime' % number
+        else:
+            return '%d is not prime' % number
+    elif number % 2 == 0 or number % 3 == 0:
+        return '%d is not prime' % number
+    i = 5
+    while i*i <= number:
+        if number % i == 0 or number % (i + 2) == 0:
+            return '%d is not prime' % number
+        i += 6
+    return '%d is prime' % number
+        
